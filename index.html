@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Trivia de turismo</title>
+
+</head>
+<style>
+    body{
+    padding-top: 10em;
+    background-image: url('../Proyecto_trivia_turismo/img/laguna69.jpg');
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    margin:0;
+    font-family: fantasy;
+}
+
+form{
+    width: 450px;
+    margin: auto;
+    background: rgba(158, 230, 240, 0.6);
+    padding: 20px 40px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: cursive;
+    font-size: 18px;
+    color:white;
+}
+h2{
+    color:aqua;
+    
+}
+
+input.a {
+background-repeat:no-repeat;
+padding:5px 25px 5px 5px;
+width:200px;
+}
+input:focus {
+outline:none;
+}
+input.a:invalid:required {
+background: url(informar.png) no-repeat center left 5px;
+border-radius:5px ;
+}
+input.a:focus:invalid {
+background: url(error.png) no-repeat center left 5px;
+border-radius:5px ;
+}
+button{
+    font-size: 16px;
+    font-family: cursive;
+    border: aqua 5px;
+    background: rgb(22, 170, 158);
+    border-radius: 10px;
+    margin: 5px 20px;
+    padding: 5px;    
+}
+</style>
+<body>
+    <form action="">
+        <table width="400">
+            <h2>Welcome to Tourism Test</h2>
+            <tr>
+                <td>Nombre:</td>
+                <td><input  type="text" name="nombre" id="nombre" placeholder="nombre"></td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td><input type="text" name="apellido" id="apellido"  placeholder="apellido"></td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td><input type="email" name="email"  id="email" placeholder="@xxx.com"></td>
+            </tr>
+           
+            <tr>
+                <td></td>
+                <td><a href="preguntas.html"><button type="button" onclick="getData()">COMENZAR</button></a></td>
+            </tr>
+        </table>
+    </form>
+    <script type="text/javascript" src="formulario.js"></script>
+</body>
+</html>

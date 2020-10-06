@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trivia de Turismo</title>
+
+	<style>
+		 body{
+			background-image: url('../Proyecto_trivia_turismo/img/fondo2.gif');
+			background-size: 100vw 100vh;
+			background-attachment: fixed;
+			margin:10em 30em;
+			font-family: cursive;
+			color: whitesmoke;
+		}
+		.right{
+			background:rgba(255, 255, 0, 0.521);
+			border-radius: 8px;
+		}
+
+		.wrong{
+			background: rgba(172, 78, 67, 0.521);
+			border-radius: 8px;
+		}
+		#boton{
+			font-size: 16px;
+			font-family: cursive;
+			border:5px;
+			border-radius: 10px;
+			margin: 5px 20px;
+			padding: 5px 10px; 
+		}
+		.question{
+			font-size: 20px;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<div class="Contabilizar">
+
+	<div class="question"></div>
+
+	<button onClick="printHTMLQuestion(currentQuestionIndex)" id="boton">Siguiente --></button>
+
+
+	<p>Respuestas correctas: <span class="rightCounter">0</span></p>
+	<p>Respuestas incorrectas: <span class="wrongCounter">0</span></p>
+
+
+	
+
+</div>
+
+	<script>
+let rightAnswer;
+let currentQuestionIndex = 0;
+let rightAnswers = 0;
+let wrongAnswers = 0;
+
+
+
+		const cuestionary = [
+			{
+				"question": "¿Cuando es el Día Mundial del Turismo?",
+				"answers": ["27/09", "12/07", "29/07", "07/12"]
+			},
+			{
+				"question": "¿En que país se encuentra Petra?",			
+				"answers": ["Jordania", "Irak", "Arabia Saudita", "Qatar"]
+			},
+			{
+				"question": "¿Cuál es el ave nacional de Perú?",
+				"answers": ["Tunqui", "Colibrí", "Pava aliblanca", "Cóndor andino"]
+			},
+			{
+				"question": "¿En que año se descubrió Machu Picchu?",	
+				"answers": ["1911", "1811", "1891", "1991", "1881"]
+			},
+			
+			{
+				"question": "¿Que deporte puedes practicar en la Huacachina?",
+				"answers": ["sandboard", "snowboard", "Patinaje", "Hicking"]
+			},
+			{
+				"question": "¿En que país se encuentra el Tōdai-ji?",
+				"answers": ["Japón", "Corea del sur", "Corea del norte", "Tailandia"]
+			},
+			{
+				"question": "¿Donde se ubican las Pirámides de Teotihuacán?",
+				"answers": ["México", "Nuevo México", "Colombia", "Ecuador"]
+			},
+			{
+				"question": "¿Arequipa es conocida como la ciudad:___?",
+				"answers": ["Blanca", "Heróica", "De la eterna primavera", "Clara"]
+			},
+			{
+				"question": "¿Que tipo de turismo se concentra en Lima?",
+				"answers": ["Cultural", "Eco-turismo", "Vivencial", "Aventura"]
+			},
+			{
+				"question": "¿Donde se encuentra La Cascada de Cheonjiyeon?",
+				"answers": ["Corea del Sur", "Tailandia", "Japón", "China"]
+			},
+			
+		];
+
+
+		const printHTMLQuestion = (i) => {
+			currentQuestionIndex++;
+			const q = cuestionary[i];
+			let a = q.answers;
+			rightAnswer = a[0];
+			a = a.sort((a,b) => Math.floor(Math.random() * 3) -1);
+
+			
+			const htmlAnswersArray = a.map( currentA => `<p class="answer"><button onClick="evaluateAnswer('${currentA}', this)">_</button> <span>${currentA}</span></p>`);
+			const htmlAnswers = htmlAnswersArray.join(' ');
+
+
+				let htmlQuestionCode = `<p>${q.question}</p><div>${htmlAnswers}</div>`;
+			document.querySelector('.question').innerHTML = htmlQuestionCode;
+		}
+
+		const evaluateAnswer = (answer, obj )=>{
+			document.querySelectorAll('.answer').forEach( a => a.classList.remove('right', 'wrong'));
+
+			const parentP = obj.parentNode;
+
+			console.log('answer:  ' + answer + ', rightAnswer: ' + rightAnswer)
+			if(answer == rightAnswer){
+				parentP.classList.add('right');
+				rightAnswers++;
+				document.querySelector('.rightCounter').innerHTML = rightAnswers;
+			}else{
+				parentP.classList.add('wrong');
+				wrongAnswers++;
+				document.querySelector('.wrongCounter').innerHTML = wrongAnswers;
+			}
+		}
+
+		const nextQuestion = _ => {
+
+		}
+
+		
+	printHTMLQuestion(currentQuestionIndex);
+		
+
+	</script>
+</body>
+</html>
